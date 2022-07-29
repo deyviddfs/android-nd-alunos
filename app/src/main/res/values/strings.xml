@@ -7,4 +7,12 @@
     <string name="foto_perfil">Foto Perfil</string>
     <string name="perfil_nome">Ashton Banks</string>
     <string name="perfil_email">aston.banks@fiap.com.br</string>
+    <string name="rm">RM</string>
+    <string name="nome_do_aluno">Nome do aluno</string>
+    <string name="curso">Curso</string>
+    <string name="ano">Ano</string>
+    <string name="turma">Turma</string>
+    <string name="salvar">Salvar</string>
+    <string name="nome">Nome</string>
+    <string name="e_mail">E-mail</string>
 </resources>
