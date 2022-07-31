@@ -7,7 +7,7 @@
     android:padding="10dp">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textFieldNome"
+        android:id="@+id/textFieldNomeLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/nome"
@@ -17,13 +17,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textFieldEmail"
+        android:id="@+id/textFieldEmailLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/e_mail"
@@ -31,9 +32,10 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textFieldNome">
+        app:layout_constraintTop_toBottomOf="@id/textFieldNomeLabel">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

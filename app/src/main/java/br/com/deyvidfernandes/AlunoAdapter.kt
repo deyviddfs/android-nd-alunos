@@ -1,10 +1,14 @@
 package br.com.deyvidfernandes
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import br.com.deyvidfernandes.database.Aluno
+import br.com.deyvidfernandes.database.AppDatabase
 
 class AlunoAdapter (private val dataSet: List<Aluno>): RecyclerView.Adapter<AlunoAdapter.ViewHolder>(){
 
@@ -34,6 +38,24 @@ class AlunoAdapter (private val dataSet: List<Aluno>): RecyclerView.Adapter<Alun
         holder.textViewAluno.text = aluno.nome
         holder.textViewCurso.text = aluno.curso
         holder.textViewTurma.text = aluno.turma
+
+        holder.itemView.setOnClickListener {
+            val builder = AlertDialog.Builder(holder.itemView.context)
+            builder.setMessage(R.string.tem_certeza_que_deseja_excluir)
+                            .setCancelable(false)
+                            .setPositiveButton(R.string.sim) { dialog, id ->
+                                // Delete selected note from database
+                                val appDb = AppDatabase.getDatabase(holder.itemView.context)
+                                appDb.alunoDao().delete(aluno)
+
+                                holder.itemView.findNavController().navigate(R.id.alunosFragment)
+                            }
+                            .setNegativeButton(R.string.nao) { dialog, id ->
+                                dialog.dismiss()
+                            }
+            val alert = builder.create()
+            alert.show()
+        }
     }
 
     //Retorna o tamanho da lista

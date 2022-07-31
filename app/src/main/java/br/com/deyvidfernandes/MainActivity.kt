@@ -2,12 +2,14 @@ package br.com.deyvidfernandes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import br.com.deyvidfernandes.database.AppDatabase
 import br.com.deyvidfernandes.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 
@@ -33,6 +35,22 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        //Perfil
+        loadHeaderMenu()
+    }
+
+    fun loadHeaderMenu() {
+        val appDb = AppDatabase.getDatabase(this)
+        val perfil = appDb.perfilDao().get()
+        if (perfil != null) {
+            val nv = binding.navView
+            val headerView = nv.getHeaderView(0)
+            val textViewNome = headerView.findViewById<TextView>(R.id.textViewNome)
+            textViewNome.setText(perfil.nome)
+            val textViewEmail = headerView.findViewById<TextView>(R.id.textViewEmail)
+            textViewEmail.setText(perfil.email)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
